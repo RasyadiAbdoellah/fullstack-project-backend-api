@@ -3,7 +3,7 @@ class PlacesController < ProtectedController
 
   # GET /places
   def index
-    @places = Place.all
+    @places = current_user.places.all
 
     render json: @places
   end
