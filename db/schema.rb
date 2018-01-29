@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126162156) do
+ActiveRecord::Schema.define(version: 20180129220918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,23 @@ ActiveRecord::Schema.define(version: 20180126162156) do
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_notes_on_place_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "name", null: false
     t.string "address"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
@@ -44,5 +54,7 @@ ActiveRecord::Schema.define(version: 20180126162156) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "notes", "places"
+  add_foreign_key "notes", "users"
   add_foreign_key "places", "users"
 end
