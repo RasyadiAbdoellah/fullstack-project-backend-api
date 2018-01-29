@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
+# Notes controller. Notes inherits ProtectedController
+
 class NotesController < ProtectedController
-  before_action :set_note, only: [:show, :update, :destroy]
+  before_action :set_note, only: %i[show update destroy]
 
   # GET /notes
   def index
@@ -14,6 +18,7 @@ class NotesController < ProtectedController
   end
 
   # POST /notes
+  # Requires place_id to get passed to it to work properly
   def create
     @note = current_user.notes.build(note_params)
 
@@ -39,13 +44,14 @@ class NotesController < ProtectedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = current_user.notes.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def note_params
-      params.require(:note).permit(:content, :place_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = current_user.notes.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def note_params
+    params.require(:note).permit(:content, :place_id)
+  end
 end

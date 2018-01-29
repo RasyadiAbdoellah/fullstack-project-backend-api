@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
+# Notes controller. Notes inherits ProtectedController
+
 class PlacesController < ProtectedController
-  before_action :set_place, only: [:show, :update, :destroy]
+  before_action :set_place, only: %i[show update destroy]
 
   # GET /places
   def index
@@ -41,13 +45,14 @@ class PlacesController < ProtectedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_place
-      @place = current_user.places.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def place_params
-      params.require(:place).permit(:name, :address, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_place
+    @place = current_user.places.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def place_params
+    params.require(:place).permit(:name, :address, :description)
+  end
 end
