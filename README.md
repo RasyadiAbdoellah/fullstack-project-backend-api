@@ -1,5 +1,7 @@
 #SpotJournal Rails Backend
 
+https://spotscout.herokuapp.com
+
 SpotJournal is a simple full stack app that allows users to save a list of locations with notes attached to each place.
 
 I had a lists of general areas in Manhattan that I want to revisit. I lost that list. I want to make a digital list that's capable of showing me the location on a map, possibly with pictures and descriptors to why its interesting, so that I don't lose it again.
