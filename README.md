@@ -1,6 +1,6 @@
-#SpotJournal Rails Backend
+# SpotJournal Rails Backend
 
-https://spotscout.herokuapp.com
+API link: https://spotscout.herokuapp.com
 
 SpotJournal is a simple full stack app that allows users to save a list of locations with notes attached to each place.
 
