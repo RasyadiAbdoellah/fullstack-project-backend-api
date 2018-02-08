@@ -49,9 +49,14 @@ https://i.imgur.com/JqugvWR.png
 - Work on version 3 backend/frontend
 - work on stretch goals e.g. maps API.
 
+## Bugs/issues to fix
+- Fix note routes to reflect relationship. user -has-many-< places -has-many-< notes
+
 ## Future Improvements
 
-Places resource should be able to hold latitude and longitude values to be able to work with map APIs.
+- Places resource should be able to hold latitude and longitude values.
+- Integrate Google Map's geocoding & address validation so that a user-entered address automatically gets converted  to lat/long
+- Modify notes routing to require place id
 
 
 
